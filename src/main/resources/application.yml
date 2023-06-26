@@ -1,0 +1,19 @@
+server:
+  port: 9000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: catalog_route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/products/**
+        - id: user_route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/users/**
+        - id: cart_route
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/cart/**
